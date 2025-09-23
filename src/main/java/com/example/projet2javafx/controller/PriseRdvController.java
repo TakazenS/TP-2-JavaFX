@@ -25,6 +25,8 @@ public class PriseRdvController implements Initializable
     @FXML private Label errorRdvLabel;
     @FXML private Button btnValiderRdv;
 
+    public Boolean isCheckBoxTrue = false;
+
     @Override
     public void initialize(URL location, ResourceBundle ressources)
     {
@@ -50,23 +52,33 @@ public class PriseRdvController implements Initializable
     @FXML
     public void evntValiderRdvClicked()
     {
-        if (fieldNom.getLength() <= 0 || fieldPrenom.getLength() <= 0 || fieldSS.getLength() <= 0) {
+        if ((fieldNom.getLength() <= 0) || (fieldPrenom.getLength() <= 0) || (fieldSS.getLength() <= 0)) {
             errorRdvLabel.setText("Veuillez entrer des valeurs correctes !");
+            return;
         }
 
         if (fieldSujet.getLength() <= 0) {
             errorRdvLabel.setText("Veuillez entrer un sujet de rendez-vous !");
+            return;
         }
 
         if (datePickerRdv.getValue().isBefore(LocalDate.now())) {
             errorRdvLabel.setText("Veuillez entrer une date correcte !");
+            return;
         }
 
         LocalTime from = LocalTime.of(fromHour.getValue(), fromMinute.getValue());
         LocalTime to = LocalTime.of(toHour.getValue(), toMinute.getValue());
         if (from.isAfter(to) || from.equals(to)) {
             errorRdvLabel.setText("Veuillez entrer une heure correcte !");
+            return;
         }
+
+        if (checkBoxReponse.isSelected()) {
+            isCheckBoxTrue = true;
+        }
+
+        errorRdvLabel.setText("");
     }
 
 }
