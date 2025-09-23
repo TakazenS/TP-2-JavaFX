@@ -17,9 +17,52 @@ public class Rdv
     private int  rdvMinuteFin;
     private String  rdvCommentaires;
 
-    public boolean isCheckBoxTrue(boolean rdvReponseDemandee)
+    public Rdv(
+            int rdvPersonneCivilite,
+            String rdvPersonneNom,
+            String rdvPersonnePrenom,
+            String rdvPersonNumSs,
+            String rdvSujet,
+            boolean rdvReponseDemandee,
+            LocalDate rdvDate,
+            int rdvHeureDebut,
+            int rdvMinuteDebut,
+            int rdvHeureFin,
+            int rdvMinuteFin,
+            String rdvCommentaires
+    )
     {
-        return rdvReponseDemandee;
+        this.rdvPersonneCivilite = rdvPersonneCivilite;
+        this.rdvPersonneNom = rdvPersonneNom;
+        this.rdvPersonnePrenom = rdvPersonnePrenom;
+        this.rdvPersonNumSs = rdvPersonNumSs;
+        this.rdvSujet = rdvSujet;
+        this.rdvReponseDemandee = rdvReponseDemandee;
+        this.rdvDate = rdvDate;
+        this.rdvHeureDebut = rdvHeureDebut;
+        this.rdvMinuteDebut = rdvMinuteDebut;
+        this.rdvHeureFin = rdvHeureFin;
+        this.rdvMinuteFin = rdvMinuteFin;
+        this.rdvCommentaires = rdvCommentaires;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Rdv{" +
+                "Civilité=" + rdvPersonneCivilite +
+                ", Nom='" + rdvPersonneNom + '\'' +
+                ", Prénom='" + rdvPersonnePrenom + '\'' +
+                ", NumSs='" + rdvPersonNumSs + '\'' +
+                ", Sujet='" + rdvSujet + '\'' +
+                ", ReponseDemandée=" + rdvReponseDemandee +
+                ", Date=" + rdvDate +
+                ", HeureDebut=" + rdvHeureDebut +
+                ", MinuteDebut=" + rdvMinuteDebut +
+                ", HeureFin=" + rdvHeureFin +
+                ", MinuteFin=" + rdvMinuteFin +
+                ", Commentaires='" + rdvCommentaires + '\'' +
+                '}';
     }
 
 }

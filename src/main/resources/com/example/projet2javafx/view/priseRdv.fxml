@@ -17,21 +17,22 @@
         <Label alignment="CENTER" layoutX="136.0" layoutY="31.0" prefHeight="31.0" prefWidth="128.0" text="Prise de RDV" />
     </Pane>
     <Pane maxWidth="-Infinity" prefHeight="520.0" prefWidth="360.0">
-        <RadioButton layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="107.0" selected="true" text="Monsieur">
+        <RadioButton fx:id="radioMr" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="107.0" selected="true" text="Monsieur">
          <toggleGroup>
             <ToggleGroup fx:id="grpSexe" />
          </toggleGroup></RadioButton>
-        <RadioButton layoutX="107.0" layoutY="7.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="107.0" text="Madame" toggleGroup="$grpSexe" />
-        <Label layoutX="14.0" layoutY="59.0" prefHeight="17.0" prefWidth="59.0" text="Nom :" />
-        <Label layoutX="14.0" layoutY="91.0" prefHeight="17.0" prefWidth="59.0" text="Prénom :" />
-        <Label layoutX="14.0" layoutY="123.0" prefHeight="17.0" prefWidth="90.0" text="n° de SS :" />
-      <TextField fx:id="fieldNom" layoutX="105.0" layoutY="55.0" prefHeight="25.0" prefWidth="241.0" promptText="Nom" />
+        <RadioButton fx:id="radioMme" layoutX="107.0" layoutY="7.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="107.0" text="Madame" toggleGroup="$grpSexe" />
+        <Label layoutX="14.0" layoutY="59.0" prefHeight="17.0" prefWidth="59.0" text="Nom* :" />
+        <Label layoutX="14.0" layoutY="91.0" prefHeight="17.0" prefWidth="59.0" text="Prénom* :" />
+        <Label layoutX="14.0" layoutY="123.0" prefHeight="17.0" prefWidth="90.0" text="n° de SS* :" />
+      <TextField fx:id="fieldNom" layoutX="105.0" layoutY="55.0" prefHeight="25.0" prefWidth="241.0" promptText="NOM" />
       <TextField fx:id="fieldPrenom" layoutX="105.0" layoutY="87.0" prefHeight="25.0" prefWidth="241.0" promptText="Prénom" />
       <TextField fx:id="fieldSS" layoutX="105.0" layoutY="119.0" prefHeight="25.0" prefWidth="241.0" promptText="SEXA AA MM LLL CCC K" />
-      <Label layoutX="15.0" layoutY="163.0" text="Sujet :" />
+      <Label layoutX="15.0" layoutY="163.0" text="Sujet* :" />
       <TextField fx:id="fieldSujet" layoutX="14.0" layoutY="182.0" prefHeight="25.0" prefWidth="332.0" promptText="Sujet" />
       <CheckBox fx:id="checkBoxReponse" layoutX="15.0" layoutY="220.0" mnemonicParsing="false" text="Réponse demandée" />
-      <Label layoutX="14.0" layoutY="249.0" text="Date :" />
+      <Label fx:id="labelReponse" alignment="TOP_LEFT" layoutX="167.0" layoutY="221.0" prefHeight="38.0" prefWidth="180.0" />
+      <Label layoutX="14.0" layoutY="249.0" text="Date* :" />
       <DatePicker fx:id="datePickerRdv" layoutX="14.0" layoutY="266.0" />
       <Label layoutX="15.0" layoutY="300.0" text="De :" />
       <Spinner fx:id="fromHour" layoutX="47.0" layoutY="296.0" prefHeight="25.0" prefWidth="68.0" />

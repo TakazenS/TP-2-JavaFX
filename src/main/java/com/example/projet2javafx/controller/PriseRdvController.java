@@ -1,8 +1,13 @@
 package com.example.projet2javafx.controller;
 
+import com.example.projet2javafx.model.Rdv;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,12 +15,15 @@ import java.util.ResourceBundle;
 
 public class PriseRdvController implements Initializable
 {
+    @FXML private RadioButton radioMr;
+    @FXML private RadioButton radioMme;
     @FXML private ToggleGroup grpSexe;
     @FXML private TextField fieldNom;
     @FXML private TextField fieldPrenom;
     @FXML private TextField fieldSS;
     @FXML private TextField fieldSujet;
     @FXML private CheckBox checkBoxReponse;
+    @FXML private Label labelReponse;
     @FXML private DatePicker datePickerRdv;
     @FXML private Spinner<Integer> fromHour;
     @FXML private Spinner<Integer> fromMinute;
@@ -24,8 +32,6 @@ public class PriseRdvController implements Initializable
     @FXML private TextArea areaCommentaire;
     @FXML private Label errorRdvLabel;
     @FXML private Button btnValiderRdv;
-
-    public Boolean isCheckBoxTrue = false;
 
     @Override
     public void initialize(URL location, ResourceBundle ressources)
@@ -49,36 +55,78 @@ public class PriseRdvController implements Initializable
         toMinute.setValueFactory(valueFactoryToMinute);
     }
 
+    private String formatTextField(TextField txt)
+    {
+        return txt.getText().substring(0, 1).toUpperCase() + txt.getText().substring(1).toLowerCase();
+    }
+
+    private String formatTextArea(TextArea txt)
+    {
+        return txt.getText().substring(0, 1).toUpperCase() + txt.getText().substring(1).toLowerCase();
+    }
+
     @FXML
     public void evntValiderRdvClicked()
     {
-        if ((fieldNom.getLength() <= 0) || (fieldPrenom.getLength() <= 0) || (fieldSS.getLength() <= 0)) {
-            errorRdvLabel.setText("Veuillez entrer des valeurs correctes !");
-            return;
-        }
+        try {
+            if ((fieldNom.getLength() <= 0) || (fieldPrenom.getLength() <= 0) || (fieldSS.getLength() <= 0)) {
+                errorRdvLabel.setText("Veuillez entrer des valeurs correctes !");
+                return;
+            }
 
-        if (fieldSujet.getLength() <= 0) {
-            errorRdvLabel.setText("Veuillez entrer un sujet de rendez-vous !");
-            return;
-        }
+            if (fieldSujet.getLength() <= 0) {
+                errorRdvLabel.setText("Veuillez entrer un sujet de rendez-vous !");
+                return;
+            }
 
-        if (datePickerRdv.getValue().isBefore(LocalDate.now())) {
-            errorRdvLabel.setText("Veuillez entrer une date correcte !");
-            return;
-        }
+            if (datePickerRdv.getValue().isBefore(LocalDate.now())) {
+                errorRdvLabel.setText("Veuillez entrer une date correcte !");
+                return;
+            }
 
-        LocalTime from = LocalTime.of(fromHour.getValue(), fromMinute.getValue());
-        LocalTime to = LocalTime.of(toHour.getValue(), toMinute.getValue());
-        if (from.isAfter(to) || from.equals(to)) {
-            errorRdvLabel.setText("Veuillez entrer une heure correcte !");
-            return;
-        }
+            LocalTime from = LocalTime.of(fromHour.getValue(), fromMinute.getValue());
+            LocalTime to = LocalTime.of(toHour.getValue(), toMinute.getValue());
+            if (from.isAfter(to) || from.equals(to)) {
+                errorRdvLabel.setText("Veuillez entrer une heure correcte !");
+                return;
+            }
 
-        if (checkBoxReponse.isSelected()) {
-            isCheckBoxTrue = true;
-        }
+            String prenom = formatTextField(fieldPrenom);
+            String sujet = formatTextField(fieldSujet);
+            String commentaire = formatTextArea(areaCommentaire);
 
-        errorRdvLabel.setText("");
+            Rdv rdv = new Rdv(
+                    radioMr.isSelected() ? 1 : 2,
+                    fieldNom.getText().toUpperCase(),
+                    prenom,
+                    fieldSS.getText(),
+                    sujet,
+                    checkBoxReponse.isSelected(),
+                    datePickerRdv.getValue(),
+                    fromHour.getValue(),
+                    fromMinute.getValue(),
+                    toHour.getValue(),
+                    toMinute.getValue(),
+                    commentaire
+            );
+
+            FXMLLoader fxmlLoader = new FXMLLoader(Tp2.class.getResource("/com/example/projet2javafx/view/confirmationRdv.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 400, 600);
+            Stage stage = new Stage();
+            stage.setTitle("TP 2 | Confirmation RDV");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            ConfirmationRdvController confirmRdvController = fxmlLoader.getController();
+            confirmRdvController.setRdv(rdv);
+
+            stage.showAndWait();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }
