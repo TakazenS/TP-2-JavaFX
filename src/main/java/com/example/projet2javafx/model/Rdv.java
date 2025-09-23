@@ -16,4 +16,10 @@ public class Rdv
     private int  rdvHeureFin;
     private int  rdvMinuteFin;
     private String  rdvCommentaires;
+
+    public boolean isCheckBoxTrue(boolean rdvReponseDemandee)
+    {
+        return rdvReponseDemandee;
+    }
+
 }
