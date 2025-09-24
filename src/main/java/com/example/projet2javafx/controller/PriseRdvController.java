@@ -124,7 +124,7 @@ public class PriseRdvController implements Initializable
             Stage stage = new Stage();
             stage.setTitle("TP 2 | Confirmation RDV");
             stage.setScene(scene);
-            stage.setResizable(false);
+            stage.setResizable(true);
             stage.getIcons().add(new Image(Objects.requireNonNull(Tp2.class.getResourceAsStream("/com/example/projet2javafx/assets/img/favicon.png"))));
             stage.initModality(Modality.APPLICATION_MODAL);
 
