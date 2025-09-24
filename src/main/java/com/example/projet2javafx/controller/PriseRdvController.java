@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class PriseRdvController implements Initializable
@@ -62,6 +63,7 @@ public class PriseRdvController implements Initializable
 
     private String formatTextArea(TextArea txt)
     {
+        if (Objects.equals(txt.getText(), "")) {return "";}
         return txt.getText().substring(0, 1).toUpperCase() + txt.getText().substring(1).toLowerCase();
     }
 
@@ -71,6 +73,11 @@ public class PriseRdvController implements Initializable
         try {
             if ((fieldNom.getLength() <= 0) || (fieldPrenom.getLength() <= 0) || (fieldSS.getLength() <= 0)) {
                 errorRdvLabel.setText("Veuillez entrer des valeurs correctes !");
+                return;
+            }
+
+            if (!(fieldSS.getLength() == 13)) {
+                errorRdvLabel.setText("Veuillez entrer un n° de sécutitée sociale correcte !");
                 return;
             }
 
@@ -120,6 +127,8 @@ public class PriseRdvController implements Initializable
 
             ConfirmationRdvController confirmRdvController = fxmlLoader.getController();
             confirmRdvController.setRdv(rdv);
+
+            System.out.println(rdv.toString());
 
             stage.showAndWait();
         }
