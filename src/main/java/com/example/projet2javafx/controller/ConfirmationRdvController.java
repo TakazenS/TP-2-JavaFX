@@ -4,11 +4,8 @@ import com.example.projet2javafx.model.Rdv;
 
 public class ConfirmationRdvController
 {
-    private Rdv rdv;
-
     public void setRdv(Rdv rdv)
     {
-        this.rdv = rdv;
+        System.out.println("Page 2 : " + rdv.toString());
     }
-
 }

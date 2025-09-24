@@ -4,24 +4,24 @@ import java.time.LocalDate;
 
 public class Rdv
 {
-    private int  rdvPersonneCivilite;
-    private String   rdvPersonneNom;
-    private String   rdvPersonnePrenom;
-    private String   rdvPersonNumSs;
-    private String  rdvSujet;
-    private boolean  rdvReponseDemandee;
-    private LocalDate rdvDate;
-    private int  rdvHeureDebut;
-    private int  rdvMinuteDebut;
-    private int  rdvHeureFin;
-    private int  rdvMinuteFin;
-    private String  rdvCommentaires;
+    final int rdvCivilite;
+    final String rdvNom;
+    final String rdvPrenom;
+    final String rdvNumSs;
+    final String rdvSujet;
+    final boolean rdvReponseDemandee;
+    final LocalDate rdvDate;
+    final int rdvHeureDebut;
+    final int rdvMinuteDebut;
+    final int rdvHeureFin;
+    final int rdvMinuteFin;
+    final String rdvCommentaires;
 
     public Rdv(
-            int rdvPersonneCivilite,
-            String rdvPersonneNom,
-            String rdvPersonnePrenom,
-            String rdvPersonNumSs,
+            int rdvCivilite,
+            String rdvNom,
+            String rdvPrenom,
+            String rdvNumSs,
             String rdvSujet,
             boolean rdvReponseDemandee,
             LocalDate rdvDate,
@@ -32,10 +32,10 @@ public class Rdv
             String rdvCommentaires
     )
     {
-        this.rdvPersonneCivilite = rdvPersonneCivilite;
-        this.rdvPersonneNom = rdvPersonneNom;
-        this.rdvPersonnePrenom = rdvPersonnePrenom;
-        this.rdvPersonNumSs = rdvPersonNumSs;
+        this.rdvCivilite = rdvCivilite;
+        this.rdvNom = rdvNom;
+        this.rdvPrenom = rdvPrenom;
+        this.rdvNumSs = rdvNumSs;
         this.rdvSujet = rdvSujet;
         this.rdvReponseDemandee = rdvReponseDemandee;
         this.rdvDate = rdvDate;
@@ -46,22 +46,83 @@ public class Rdv
         this.rdvCommentaires = rdvCommentaires;
     }
 
+    public int getRdvCivilite()
+    {
+        return rdvCivilite;
+    }
+
+    public String getRdvNom()
+    {
+        return rdvNom;
+    }
+
+    public String getRdvPrenom()
+    {
+        return rdvPrenom;
+    }
+
+    public String getRdvNumSs()
+    {
+        return rdvNumSs;
+    }
+
+    public String getRdvSujet()
+    {
+        return rdvSujet;
+    }
+
+    public boolean isRdvReponseDemandee()
+    {
+        return rdvReponseDemandee;
+    }
+
+    public LocalDate getRdvDate()
+    {
+        return rdvDate;
+    }
+
+    public int getRdvHeureDebut()
+    {
+        return rdvHeureDebut;
+    }
+
+    public int getRdvMinuteDebut()
+    {
+        return rdvMinuteDebut;
+    }
+
+    public int getRdvHeureFin()
+    {
+        return rdvHeureFin;
+    }
+
+    public int getRdvMinuteFin()
+    {
+        return rdvMinuteFin;
+    }
+
+    public String getRdvCommentaires()
+    {
+        return rdvCommentaires;
+    }
+
     @Override
     public String toString()
     {
         return "Rdv{" +
-                "Civilité=" + rdvPersonneCivilite +
-                ", Nom='" + rdvPersonneNom + '\'' +
-                ", Prénom='" + rdvPersonnePrenom + '\'' +
-                ", NumSs='" + rdvPersonNumSs + '\'' +
-                ", Sujet='" + rdvSujet + '\'' +
-                ", ReponseDemandée=" + rdvReponseDemandee +
-                ", Date=" + rdvDate +
-                ", HeureDebut=" + rdvHeureDebut +
-                ", MinuteDebut=" + rdvMinuteDebut +
-                ", HeureFin=" + rdvHeureFin +
-                ", MinuteFin=" + rdvMinuteFin +
-                ", Commentaires='" + rdvCommentaires + '\'' +
+                "rdvCivilite=" + rdvCivilite +
+                ", rdvNom='" + rdvNom + '\'' +
+                ", rdvPrenom='" + rdvPrenom + '\'' +
+                ", rdvNumSs='" + rdvNumSs + '\'' +
+                ", rdvSujet='" + rdvSujet + '\'' +
+                ", rdvReponseDemandee=" + rdvReponseDemandee +
+                "\n" +
+                ", rdvDate=" + rdvDate +
+                ", rdvHeureDebut=" + rdvHeureDebut +
+                ", rdvMinuteDebut=" + rdvMinuteDebut +
+                ", rdvHeureFin=" + rdvHeureFin +
+                ", rdvMinuteFin=" + rdvMinuteFin +
+                ", rdvCommentaires='" + rdvCommentaires + '\'' +
                 '}';
     }
 

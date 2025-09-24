@@ -3,8 +3,10 @@ package com.example.projet2javafx.controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Tp2 extends Application
 {
@@ -15,7 +17,8 @@ public class Tp2 extends Application
         Scene scene = new Scene(fxmlLoader.load(), 400, 600);
         stage.setTitle("TP 2 | Prise de RDV");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.getIcons().add(new Image(Objects.requireNonNull(Tp2.class.getResourceAsStream("/com/example/projet2javafx/assets/img/favicon.png"))));
+        stage.setResizable(true);
         stage.show();
     }
 

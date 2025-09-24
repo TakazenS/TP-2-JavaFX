@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.net.URL;
@@ -70,7 +71,8 @@ public class PriseRdvController implements Initializable
     @FXML
     public void evntValiderRdvClicked()
     {
-        try {
+        try
+        {
             if ((fieldNom.getLength() <= 0) || (fieldPrenom.getLength() <= 0) || (fieldSS.getLength() <= 0)) {
                 errorRdvLabel.setText("Veuillez entrer des valeurs correctes !");
                 return;
@@ -123,12 +125,11 @@ public class PriseRdvController implements Initializable
             stage.setTitle("TP 2 | Confirmation RDV");
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.getIcons().add(new Image(Objects.requireNonNull(Tp2.class.getResourceAsStream("/com/example/projet2javafx/assets/img/favicon.png"))));
             stage.initModality(Modality.APPLICATION_MODAL);
 
             ConfirmationRdvController confirmRdvController = fxmlLoader.getController();
             confirmRdvController.setRdv(rdv);
-
-            System.out.println(rdv.toString());
 
             stage.showAndWait();
         }
