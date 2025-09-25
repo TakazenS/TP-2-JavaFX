@@ -78,6 +78,12 @@ public class PriseRdvController implements Initializable
                 return;
             }
 
+            String regexfieldSS = "^[0-9]{13}$";
+            if (!(fieldSS.getText().matches(regexfieldSS))) {
+                errorRdvLabel.setText("Veuillez entrer des caractère correctes pour le n° de SS !");
+                return;
+            }
+
             if (!(fieldSS.getLength() == 13)) {
                 errorRdvLabel.setText("Veuillez entrer un n° de sécutitée sociale correcte !");
                 return;
